@@ -4,24 +4,34 @@
 import React, { useState } from 'react'
 
 function Avaleht() {
-  const [kogus, uuendaKogus] = useState(12);
+  const [kogus, uuendaKogus] = useState(12); // numbrilised - saan arvutusi teha, toote hind, kogused
+  const [sonum, uuendaSonum] = useState(""); // sõnalised - isikukood, telefoninumber
+  const [laigitud, uuendaLaigitud] = useState(false); // kahendväärtus, koosneb vaid true/false. täisealine/sisselogitud/makstud
 
   function nulli() {
     uuendaKogus(0);
+    uuendaSonum("Kogus nullitud!");
   }
 
   function vahenda() {
     uuendaKogus(kogus - 1);
+    uuendaSonum("Kogus vähendatud!");
   }
 
   function suurenda() {
     uuendaKogus(kogus + 1);
+    uuendaSonum("Kogus suurendatud!");
   }
 
   return (
     <div>
-      <button onClick={nulli}>Nulli</button>
-      <button onClick={vahenda}>-</button>
+      {laigitud === true && <img src="/laigitud.svg" alt="" />}
+      {laigitud === false && <img src="/mittelaigitud.svg" alt="" />}
+      <button onClick={() => uuendaLaigitud(!laigitud)}>Muuda laigitut</button>
+      <div>{sonum}</div>
+      {/* { kogus !== 0 && <button onClick={nulli}>Nulli</button>} */}
+      { kogus > 0 && <button onClick={nulli}>Nulli</button>}
+      <button disabled={kogus === 0} onClick={vahenda}>-</button>
       {kogus}
       <button onClick={suurenda}>+</button>
     </div>
