@@ -49,9 +49,9 @@ function Seaded() {                // localStorage.getItem("language");
       <input ref={aadressViide} type="text" />
       <button onClick={salvestaAadress}>Sisesta</button>
       <br />
-      <button onClick={muudaKeelEst}>Eesti keelseks</button>
-      <button onClick={muudaKeelEng}>To English</button>
-      <button onClick={muudaKeelRus}>Pycckuj</button>
+      <button onClick={muudaKeelEst} className={keel === "est" ? "aktiivne-keel" : undefined }>Eesti keelseks</button>
+      <button onClick={muudaKeelEng} className={keel === "eng" ? "aktiivne-keel" : undefined }>To English</button>
+      <button onClick={muudaKeelRus} className={keel === "rus" ? "aktiivne-keel" : undefined }>Pycckuj</button>
       {keel === "est" && <div>Leht on eestikeelne</div>}
       {keel === "eng" && <div>Page is in english</div>}
       {keel === "rus" && <div>Pycckuj Rsõk</div>}

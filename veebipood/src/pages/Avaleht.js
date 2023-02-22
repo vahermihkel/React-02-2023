@@ -32,7 +32,7 @@ function Avaleht() {
       {/* { kogus !== 0 && <button onClick={nulli}>Nulli</button>} */}
       { kogus > 0 && <button onClick={nulli}>Nulli</button>}
       <button disabled={kogus === 0} onClick={vahenda}>-</button>
-      {kogus}
+        <span className={ kogus <= 10 ? "kollane" : "roheline" }>{kogus}</span>
       <button onClick={suurenda}>+</button>
     </div>
   )
