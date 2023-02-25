@@ -12,8 +12,9 @@ function Meist() {
       <br />
       Meie telefon: {telefon} 
         { telefon.startsWith("+372") === false && <button onClick={() => uuendaTelefoni("+372" + telefon)}>Lisa suunakood</button>}
-      <br />
-      Meie aadress: {aadress}
+      <br />          
+      {/*                       A                       a */}
+      <span className={aadress.charAt(0) === aadress.charAt(0).toLowerCase() ? "kollane" : "roheline"}>Meie aadress: {aadress}</span>
         <button onClick={() => uuendaAadress(aadress.toUpperCase())}>Aadress suurteks tähtedeks</button>
         <button onClick={() => uuendaAadress(aadress.toLowerCase())}>Aadress väikesteks tähtedeks</button>
     </div>

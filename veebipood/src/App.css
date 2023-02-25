@@ -30,3 +30,25 @@
   text-decoration: underline;
   background-color: darkgray;
 }
+
+.aktiivne-url {
+  font-size: 25px;
+}
+
+.dark-mode {
+  background-color: black;
+  height: 100vh; 
+  color: white;
+  /* vh --- view height
+  tähendab mitu protsenti lehe vaate kõrgusest
+  on tema enda kõrgus */
+}
+
+.dark-mode button {
+  border: 2px solid blue;
+}
+
+.light-mode {
+  background-color: yellow;
+  height: 100vh;
+}
