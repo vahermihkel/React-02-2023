@@ -37,7 +37,8 @@
 
 .dark-mode {
   background-color: black;
-  height: 100vh; 
+  min-height: 100vh;
+  height: 100%; 
   color: white;
   /* vh --- view height
   tähendab mitu protsenti lehe vaate kõrgusest
@@ -49,6 +50,7 @@
 }
 
 .light-mode {
-  background-color: yellow;
-  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  min-height: 100vh;
+  height: 100%;
 }

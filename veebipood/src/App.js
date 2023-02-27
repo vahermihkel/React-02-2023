@@ -6,6 +6,7 @@ import LisaToode from './pages/LisaToode';
 import Seaded from './pages/Seaded';
 import Meist from './pages/Meist';
 import { useState } from 'react';
+import Poed from './pages/Poed';
 
 // HTML elemente on 2 erinevat:
 // 1. algus ja lõpu tag, lõpp on kaldkriipsuga tag nimetuse ees
@@ -42,6 +43,9 @@ function App() {                                          // ????????
       <Link to="/meist">
         <button className={aktiivneURL === "/meist" ? "aktiivne-url" : "nupp"} onClick={() => uuendaAktiivneURL("/meist")}>Meist</button>
       </Link>
+      <Link to="/poed">
+        <button className={aktiivneURL === "/poed" ? "aktiivne-url" : "nupp"} onClick={() => uuendaAktiivneURL("/poed")}>Poed</button>
+      </Link>
 
       <Routes>
         <Route path="" element={ <Avaleht /> } />
@@ -49,6 +53,7 @@ function App() {                                          // ????????
         <Route path="lisa-toode" element={ <LisaToode /> } />
         <Route path="seaded" element={ <Seaded /> } />
         <Route path="meist" element={ <Meist /> } />
+        <Route path="poed" element={ <Poed /> } />
       </Routes>
     </div>
   );
@@ -73,7 +78,7 @@ export default App;
 // Udacity peatükid 1-2
 // CodeAcademy peatükk 3
 // Udacity peatükk 3
-// CodeAcademy peatükk 4,5
+// CodeAcademy peatükk 4,5    Array
 // Udacity peatükk 5 (4 jääb vahele!)
 // CodeAcademy peatükk 6
 // Udacity peatükk 6
