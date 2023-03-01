@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ostukorvFailist from "../data/ostukorv.json";
 
 function Ostukorv() {
-  const [ostukorv, uuendaOstukorv] = useState([
-    "Coca",
-    "Fanta",
-    "Sprite",
-    "Vichy",
-    "Vitamin well",
-  ]);
+  const [ostukorv, uuendaOstukorv] = useState(ostukorvFailist);
+  // hard-coded
 
   const kustuta = (jrkNr) => {
-    ostukorv.splice(jrkNr,1);
-    uuendaOstukorv(ostukorv.slice());
+    ostukorvFailist.splice(jrkNr,1);
+    uuendaOstukorv(ostukorvFailist.slice());
   };
 
   const lisa = (klikitudToode) => {
-    ostukorv.push(klikitudToode);
-    uuendaOstukorv(ostukorv.slice());
+    ostukorvFailist.push(klikitudToode);
+    uuendaOstukorv(ostukorvFailist.slice());
   }
 
   const tyhjenda = () => {
+    ostukorvFailist = [];
     uuendaOstukorv([]);
   }
 
@@ -31,7 +28,7 @@ function Ostukorv() {
       {ostukorv.length > 0 && <div>Ostukorvi esemeid on {ostukorv.length} tk</div>}
       <div>
         {ostukorv.map((element, jrkNr) => 
-          <div>
+          <div key={jrkNr}>
             {element} <button onClick={() => kustuta(jrkNr)}>x</button>
                       <button onClick={() => lisa(element)}>+</button>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import poedFailist from "../poed.json";
+import poedFailist from "../data/poed.json";
 
 function Poed() {
   // [] -- array
@@ -115,7 +115,7 @@ function Poed() {
 
       <div>{poed.length} tk</div>
 
-      {poed.map(yksPood => <div>{yksPood}</div> )}
+      {poed.map(yksPood => <div key={yksPood}>{yksPood}</div> )}
       <div>--------------------</div>
       <div>Ülemiste</div>
       <div>Viimsi</div>
