@@ -1,0 +1,26 @@
+[
+  {
+      "nimetus": "kristiine",
+      "aeg": "9-22",
+      "aadress": "tulika 7b",
+      "kommentaarid": ""
+  },
+  {
+      "nimetus": "mustamäe",
+      "aeg": "10-22",
+      "aadress": "tammsaare tee 2",
+      "kommentaarid": "sdasd "
+  },
+  {
+      "nimetus": "balti jaam",
+      "aeg": "11-00",
+      "aadress": "niine 12",
+      "kommentaarid": ""
+  },
+  {
+      "nimetus": "lasnamäe",
+      "aeg": "9-20",
+      "aadress": "mustakivi 44",
+      "kommentaarid": ""
+  }
+]

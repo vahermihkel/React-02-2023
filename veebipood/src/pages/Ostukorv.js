@@ -29,8 +29,11 @@ function Ostukorv() {
       <div>
         {ostukorv.map((element, jrkNr) => 
           <div key={jrkNr}>
-            {element} <button onClick={() => kustuta(jrkNr)}>x</button>
-                      <button onClick={() => lisa(element)}>+</button>
+            <img className="pilt" src={element.pilt} alt="" />
+            <div>{element.nimi}</div>
+            <div>{element.hind} 000 €</div>
+            <button onClick={() => kustuta(jrkNr)}>x</button>
+            <button onClick={() => lisa(element)}>+</button>
           </div>
         )}
       </div>
