@@ -21,6 +21,16 @@ function Ostukorv() {
     uuendaOstukorv([]);
   }
 
+  const arvutaKogusumma = () => {
+    let kogusumma = 0; // const tüüpi muutujaid rohkem muuta ei saa. let tüüpi muutujaid saan lõpmatuseni muuta
+    //[{"nimi":"Nobe", "hind": 67}, {"nimi":"Tesla", "hind": 87},{"nimi":"Nobe", "hind": 67} ]
+    // 1. {"nimi":"Nobe", "hind": 67} =>   67     =    0      +   67
+    // 2. {"nimi":"Tesla", "hind": 87} =>  154    =    67     +   87
+    // 3. {"nimi":"Nobe", "hind": 67} =>   221    =    154    +   67
+    ostukorvFailist.forEach(yksToode => kogusumma = kogusumma + yksToode.hind);
+    return kogusumma; // väljastan kogusumma HTMLi
+  }
+
   return (
     <div>
       {ostukorv.length > 0 && <button onClick={tyhjenda}>Tühjenda</button>}
@@ -37,6 +47,7 @@ function Ostukorv() {
           </div>
         )}
       </div>
+      {ostukorv.length > 0 && <div>Summa kokku: {arvutaKogusumma()} 000 €</div>}
     </div>
   );
 }

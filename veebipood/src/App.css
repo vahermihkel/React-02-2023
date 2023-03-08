@@ -54,3 +54,13 @@
   min-height: 100vh;
   height: 100%;
 }
+
+.aktiivne-toode {
+  border: 1px solid green;
+  background-color: rgb(233, 237, 233);
+}
+
+.mitteaktiivne-toode {
+  border: 1px solid red;
+  background-color: rgb(241, 234, 234);
+}

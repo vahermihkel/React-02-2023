@@ -14,13 +14,15 @@ function HaldaTooted() {
   return (
     <div>
       {tooted.map((el, ix) => 
-        <div key={ix}>
+        <div key={ix} className={el.aktiivne === true ? "aktiivne-toode" : "mitteaktiivne-toode"}>
           {/* {el} */}
           <img className="pilt" src={el.pilt} alt="" />
           <div>{el.pilt}</div>
           <div>{el.nimi}</div>
           <div>{el.hind} 000 €</div>
-          <div>{el.aktiivne + 0}</div>
+          {/* <div>{el.aktiivne + 0}</div> */}
+          {el.aktiivne === true && <div>Aktiivne</div>}
+          {el.aktiivne === false && <div>Mitteaktiivne</div>}
           <button onClick={() => kustuta(ix)}>x</button>
           <Link to={"/muuda/" + ix}><button>Muuda</button></Link>
         </div>)}

@@ -21,9 +21,9 @@ function LisaToode() {
       // []  ERROR:  tühi fail  {}   "[]"
       tootedFailist.push({
         "nimi":inputiLuger.current.value,
-        "hind":hindRef.current.value,
+        "hind":Number(hindRef.current.value), // numbriline: HTML-s number, JS: teisendus Number()
         "pilt":piltRef.current.value,
-        "aktiivne":aktiivneRef.current.value,
+        "aktiivne":aktiivneRef.current.checked, // kahendväärtus: HTML-s checkbox, JS: .checked
       }); // TEGELIKKUSES: Lisab andmebaasi
       inputiLuger.current.value = "";
     }
@@ -35,11 +35,11 @@ function LisaToode() {
       <label>Uue toote nimi</label> <br />
       <input ref={inputiLuger} type="text" /> <br />
       <label>Uue toote hind</label> <br />
-      <input ref={hindRef} type="text" /> <br />
+      <input ref={hindRef} type="number" /> <br />
       <label>Uue toote pilt</label> <br />
       <input ref={piltRef} type="text" /> <br />
       <label>Uue toote aktiivne</label> <br />
-      <input ref={aktiivneRef} type="text" /> <br />
+      <input ref={aktiivneRef} type="checkbox" /> <br />
       {/* <button onClick={() => lisa()}>Sisesta</button> <br /> */}
       <button onClick={lisa}>Sisesta</button> <br />
     </div>

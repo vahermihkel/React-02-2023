@@ -1,5 +1,8 @@
 [
   {"nimi":"Nobe", "hind": 67, "aktiivne": true, "pilt": "https://nobecars.com/wp-content/uploads/2022/01/Untitled-2-5-1024x473.png"}, 
+  {"nimi":"Nissan", "hind": 27, "aktiivne": true, "pilt": ""}, 
   {"nimi":"Tesla", "hind": 87, "aktiivne": true, "pilt": "https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/a457eac7-0944-4072-a7b7-4d99283b0373/c53732f7-ac18-430c-9d02-e76035a59cfb.png"}, 
-  {"nimi":"BMW", "hind": 40, "aktiivne": false, "pilt": "https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/brands/bmw_i/2023/230201_BMW_Group_BMW_i4eDrive40.png"}
+  {"nimi":"Toyota", "hind": 37, "aktiivne": true, "pilt": ""}, 
+  {"nimi":"BMW", "hind": 40, "aktiivne": false, "pilt": "https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/brands/bmw_i/2023/230201_BMW_Group_BMW_i4eDrive40.png"},
+  {"nimi":"Bentley", "hind": 60, "aktiivne": false, "pilt": ""}
 ]
