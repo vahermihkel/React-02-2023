@@ -3,7 +3,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/public/HomePage";
 import Cart from "./pages/public/Cart";
 import Shops from "./pages/public/Shops";
-import ContactUs from "./pages/public/ContactUs";
+import {ContactUs} from "./pages/public/ContactUs";
 import AdminHome from "./pages/admin/AdminHome";
 import AddProduct from "./pages/admin/AddProduct";
 import EditProduct from "./pages/admin/EditProduct";
@@ -14,6 +14,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useTranslation } from 'react-i18next';
+import SingleProduct from './pages/public/SingleProduct';
 
 // 1h15min
 // 13.03  13.00-16.30  paus: 14.45-15.00
@@ -43,8 +44,8 @@ function App() {
             <Nav.Link as={Link} to="/contact">{t("contact")}</Nav.Link>
             <Nav.Link as={Link} to="/shops">{t("shops")}</Nav.Link>
           </Nav>
-          <img className="lang" src="/english.png" alt="" onClick={() => updateLang("ee")} />
-          <img className="lang" src="/estonian.png" alt=""  onClick={() => updateLang("en")} />
+          <img className="lang" src="/english.png" alt="" onClick={() => updateLang("en")} />
+          <img className="lang" src="/estonian.png" alt=""  onClick={() => updateLang("ee")} />
         </Container>
       </Navbar>
 
@@ -53,9 +54,10 @@ function App() {
         <Route path="cart" element={ <Cart /> } />
         <Route path="shops" element={ <Shops /> } />
         <Route path="contact" element={ <ContactUs /> } />
+        <Route path="product/:id" element={ <SingleProduct /> } />
         <Route path="admin" element={ <AdminHome /> } />
         <Route path="admin/add-product" element={ <AddProduct /> } />
-        <Route path="admin/edit-product" element={ <EditProduct /> } />
+        <Route path="admin/edit-product/:id" element={ <EditProduct /> } />
         <Route path="admin/maintain-products" element={ <MaintainProducts /> } />
         <Route path="admin/maintain-shops" element={ <MaintainShops /> } />
         <Route path="admin/maintain-categories" element={ <MaintainCategories /> } />
@@ -65,3 +67,26 @@ function App() {
 }
 
 export default App;
+
+// LinkedIn
+// MeetFrank
+// Ettevõtete kodulehed
+
+// CVOnline / CVKeskus on jäämäe pealne tipp
+
+// 3-4-5 vähemalt projekti algusest lõpuni - ideaalis 10 projekti
+
+// 1-2 kuud palgata
+// 3-4 kuud miinimum
+// 5kuud-12kuud 1000bruto
+// 1-1.5a 1500bruto
+// 2 2000 bruto
+// 3 3000 bruto 2313€   ---  4414
+// 4 4000 bruto
+// 5 5000 bruto 3856€   ---  6690
+
+// 1. kood selgeks saada
+// 2. ettevõttesse tööle jõuda - 20CV-d vähe
+// 3. esimest korda ettevõttes muudatusi
+
+// 1.-1.5a   3nädalat   i62    6 inimest korraga
