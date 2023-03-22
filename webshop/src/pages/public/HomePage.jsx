@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
-import productsFromFile from "../../data/products.json";
+import React, { useEffect, useState } from 'react'
+// import productsFromFile from "../../data/products.json";
 import categoriesFromFile from "../../data/categories.json";
-// import cartFromFile from "../../data/cart.json";
 import Button from '@mui/material/Button';
 
 function HomePage() {
-  const [products, setProducts] = useState(productsFromFile);
+  const [products, setProducts] = useState([]);
 
-  const addToCart = (element) => {
+  useEffect(() => {
+    fetch("https://mihkel-webshop-02-2023-default-rtdb.europe-west1.firebasedatabase.app/products.json")
+      .then(res => res.json())
+      .then(json => setProducts(json));
+  }, []);
+
+  const addToCart = (productClicked) => {
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];     //   || ""
-    cartLS.push(element);
+    const index = cartLS.findIndex(cartProduct => cartProduct.product.id === productClicked.id);
+    if (index !== -1) {   // index >= 0
+      // suurendan kogust ---> tegemist on MUUTMISEGA
+      // muudetakse elemente indexi (järjekorranumbri) alusel
+      cartLS[index].quantity = cartLS[index].quantity + 1;
+    } else {
+      // lisan lõppu kogusega 1
+      cartLS.push({product: productClicked, quantity: 1});
+    }
     localStorage.setItem("cart", JSON.stringify(cartLS));
     //localStorage.getItem("võti"); // VÕTA VÄÄRTUS LOCALSTORAGE-st
     //localStorage.setItem("võti", "uus_väärtus"); // PANE VÄÄRTUS LOCALSTORAGE-sse
@@ -22,7 +35,8 @@ function HomePage() {
   }
 
   const filterByCategory = (categoryClicked) => {
-    const result = productsFromFile.filter(element => element.category === categoryClicked);
+    //     peame võtma otse andmebaasist    productsFromFile <--- oli otseandmebaasist
+    const result = products.filter(element => element.category === categoryClicked);
     setProducts(result);
   }
 

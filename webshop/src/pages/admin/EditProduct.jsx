@@ -40,7 +40,7 @@ function EditProduct() {
 
   const checkIdUniqueness = () => {
     const found = productsFromFile.find(element => element.id === Number(idRef.current.value));
-    if (found === undefined) {
+    if (found === undefined) { // findIndex --> kui ei leita -1         find --> kui ei leita undefined
       setMessage("");
     } else {
       setMessage("ID is not unique!");
