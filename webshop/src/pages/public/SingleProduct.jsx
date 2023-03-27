@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import productsFromFile from "../../data/products.json";
+import config from "../../data/config.json";
+// import productsFromFile from "../../data/products.json";
 
 function SingleProduct() {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const { id } = useParams(); // id järgi
   //const found = productsFromFile[id]; // failist järjekorranumbriga
-  const found = productsFromFile.find(element => element.id === Number(id));
+  const found = products.find(element => element.id === Number(id));
   // useParams()
   // .find()
+
+  useEffect(() => {
+    fetch(config.productsDbUrl) // <--- url tuleb failist
+      .then(res => res.json())
+      .then(json => {
+        setProducts(json || []); 
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading === true) {
+    return <Spinner />
+  }
 
   return (
     <div>
