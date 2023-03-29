@@ -77,11 +77,11 @@ function EditProduct() {
   }
 
   if (isLoading === true) {
-    return <Spinner />
+    return <div className="center"><Spinner /></div>
   }
   
   return (
-    <div>
+    <div className="center">
       {product !== undefined && <div>
         {message} <br />
         <label>Product's id:</label> <br />

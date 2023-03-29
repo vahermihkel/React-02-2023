@@ -16,3 +16,29 @@
 .map {
   height: 300px;
 }
+
+.active {
+  border: 1px solid green;
+  background-color: rgb(236, 241, 236);
+}
+
+.inactive {
+  border: 1px solid red;
+  background-color: rgb(244, 239, 239);
+}
+
+.center {
+  text-align: center;
+  margin: 50px;
+}
+
+.categories {
+  width: 300px;
+  margin: auto;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+}

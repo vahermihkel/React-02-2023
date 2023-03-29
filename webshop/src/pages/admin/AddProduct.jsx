@@ -27,31 +27,62 @@ function AddProduct() {
   }, []);
  
   const add = () => {
+    if(idRef.current.value === ""){
+      setMessage("Can't add product with empty id!");
+      return; // lõpetas funktsiooni
+    } 
     if(nameRef.current.value === ""){
-      setMessage("Can't add product with empty name!")
-    } else{
-      products.push({
-        "id":Number(idRef.current.value),
-        "name":nameRef.current.value,
-        "image":imageRef.current.value,
-        "price":Number(priceRef.current.value),
-        "category":categoryRef.current.value,
-        "description":descriptionRef.current.value,
-        "active":activeRef.current.checked 
-      });
-      // SIIA ANDMEBAASI SAATMINE
-      fetch(config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(products)})
-        .then(res => res.json())
-        .then(() => {
-          setMessage("Product added: " + nameRef.current.value + "!");
-          idRef.current.value = "";
-          nameRef.current.value = "";
-          imageRef.current.value = "";
-          priceRef.current.value = "";
-          descriptionRef.current.value = "";
-          activeRef.current.checked = false;
-        })
+      setMessage("Can't add product with empty name!");
+      return; // lõpetas funktsiooni
     }
+    // nimi === Nimi        nimi === nimi 
+    // if(nameRef.current.value[0].toLowerCase() === nameRef.current.value[0]){
+    //   setMessage("Can't add product with small letter!");
+    //   return; // lõpetas funktsiooni
+    // } 
+    if(/^[A-Z].*/.test(nameRef.current.value) === false){
+      setMessage("Can't add product with small letter!");
+      return; // lõpetas funktsiooni
+    } 
+    if(priceRef.current.value === ""){
+      setMessage("Can't add product with empty price!");
+      return; // lõpetas funktsiooni
+    }
+    if(imageRef.current.value === ""){
+      setMessage("Can't add product with empty image!");
+      return; // lõpetas funktsiooni
+    } 
+    // if(imageRef.current.value.replaceAll(" ", "").length !== imageRef.current.value.length){
+    //   setMessage("Can't add product image address with spaces!");
+    //   return; // lõpetas funktsiooni
+    // } 
+    if (/^\S*$/.test(imageRef.current.value) === false) {
+      setMessage("Can't add product image address with spaces!");
+      return; // lõpetas funktsiooni
+    }
+
+    products.push({
+      "id":Number(idRef.current.value),
+      "name":nameRef.current.value,
+      "image":imageRef.current.value,
+      "price":Number(priceRef.current.value),
+      "category":categoryRef.current.value,
+      "description":descriptionRef.current.value,
+      "active":activeRef.current.checked 
+    });
+    // SIIA ANDMEBAASI SAATMINE
+    fetch(config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(products)})
+      .then(res => res.json())
+      .then(() => {
+        setMessage("Product added: " + nameRef.current.value + "!");
+        idRef.current.value = "";
+        nameRef.current.value = "";
+        imageRef.current.value = "";
+        priceRef.current.value = "";
+        descriptionRef.current.value = "";
+        activeRef.current.checked = false;
+      })
+    
  
   }
 
@@ -65,7 +96,7 @@ function AddProduct() {
   }
   
   return (
-    <div>
+    <div className="center">
       {message} <br />
       <label>New product's id:</label> <br />
       <input onChange={checkIdUniqueness} ref={idRef} type="number"/> <br />

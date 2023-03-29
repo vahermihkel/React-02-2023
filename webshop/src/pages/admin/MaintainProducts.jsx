@@ -40,7 +40,7 @@ function MaintainProducts() {
   }
 
   if (isLoading === true) {
-    return <Spinner />
+    return <div className="center"><Spinner /></div>
   }
 
   return (
@@ -48,7 +48,7 @@ function MaintainProducts() {
       <input onChange={searchFromProducts} ref={searchRef} type="text" />
       <div>{products.length} pcs</div>
       {products.map((element, index) => 
-        <div>
+        <div key={index} className={ element.active ? "active" : "inactive" }>
           <img src={element.image} alt="" />
           <div>{element.id}</div>
           <div>{element.name}</div>

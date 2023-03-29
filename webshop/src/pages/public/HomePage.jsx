@@ -73,7 +73,7 @@ function HomePage() {
   }
 
   if (isLoading === true) {
-    return <Spinner />
+    return <div className="center"><Spinner /></div>
   }
 
   return (

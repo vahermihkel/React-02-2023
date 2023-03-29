@@ -13,6 +13,9 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 function Map(props) { 
+  // võtta kõik poed shops,setShops useState sisse
+
+  // uef
 
   return (
   <div>
@@ -23,7 +26,7 @@ function Map(props) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[59.4269, 24.7241]}>
+      {/* <Marker position={[59.4269, 24.7241]}>
         <Popup>
           Kristiine keskus. <br /> Avatud 10-21
         </Popup>
@@ -37,7 +40,14 @@ function Map(props) {
         <Popup>
           Tasku keskus. <br /> Avatud 9-21
         </Popup>
-      </Marker>
+      </Marker> */}
+
+      {/* KODUS: */}
+      {/* shops.map(element => <Marker position={[element.longitute, element.latitude]}>
+        <Popup>
+          {element.name}. <br /> {element.openTime}
+        </Popup>
+      </Marker>) */}
     </MapContainer>
   </div>)
 }
