@@ -17,3 +17,9 @@ code {
 * {
   font-family: 'Lato', sans-serif;
 }
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}

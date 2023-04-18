@@ -6,6 +6,7 @@ import { Spinner } from 'react-bootstrap';
 import { CartSumContext } from '../../store/CartSumContext';
 import SortButtons from '../../components/home/SortButtons';
 import FilterBar from '../../components/home/FilterBar';
+import "../../css/HomePage.css";
 
 function HomePage() {
   const [dbProducts, setDbProducts] = useState([]);
@@ -51,16 +52,18 @@ function HomePage() {
       <FilterBar dbProducts={dbProducts} setProducts={setProducts} categories={categories} />
       <div>{products.length} pcs</div>
       <SortButtons products={products} setProducts={setProducts} />
-      {products.map(element => 
-        <div key={element.id}>
-          <Link to={"/product/" + element.id}>
-            <img src={element.image} alt="" />
-            <div>{element.name}</div>
-            <div>{element.price}</div>
-          </Link>
-          <Button variant="contained" onClick={() => addToCart(element)}>Add to cart</Button>
-        </div>
-        )}
+      <div className="product-wrapper-home">
+        {products.map(element => 
+          <div className="product-home" key={element.id}>
+            <Link to={"/product/" + element.id}>
+              <img src={element.image} alt="" />
+              <div>{element.name}</div>
+              <div>{element.price}</div>
+            </Link>
+            <Button variant="contained" onClick={() => addToCart(element)}>Add to cart</Button>
+          </div>
+          )}
+      </div>
     </div>
   )
 }

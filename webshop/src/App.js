@@ -10,9 +10,12 @@ import EditProduct from "./pages/admin/EditProduct";
 import MaintainProducts from "./pages/admin/MaintainProducts";
 import MaintainShops from "./pages/admin/MaintainShops";
 import MaintainCategories from "./pages/admin/MaintainCategories";
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import { useTranslation } from 'react-i18next';
 import SingleProduct from './pages/public/SingleProduct';
 import { CartSumContext } from './store/CartSumContext';
@@ -20,6 +23,7 @@ import { useContext } from 'react';
 import Login from './pages/public/Login';
 import Signup from './pages/public/Signup';
 import { AuthContext } from './store/AuthContext';
+import NotFound from './pages/public/NotFound';
 
 // 1h15min
 // 13.03  13.00-16.30  paus: 14.45-15.00
@@ -56,7 +60,39 @@ function App() {
     <div className="App">
       {/* <h1>{t('Welcome to React')}</h1> */}
 
-      <Navbar bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            {loggedIn === true && <Nav.Link as={Link} to="/admin">{t("admin")}</Nav.Link>}
+            <Nav.Link as={Link} to="/cart">{t("cart")}</Nav.Link>
+            <Nav.Link as={Link} to="/contact">{t("contact")}</Nav.Link>
+            <Nav.Link as={Link} to="/shops">{t("shops")}</Nav.Link>
+            {loggedIn === false && <Nav.Link as={Link} to="/login">{t("login")}</Nav.Link>}
+            {loggedIn === false && <Nav.Link as={Link} to="/signup">{t("signup")}</Nav.Link>}
+            {loggedIn === true && <Nav.Link onClick={logout}>Logi välja</Nav.Link>}
+            {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown> */}
+          </Nav>
+          <div style={{"color": "white"}}>{cartSum} €</div>
+          <img className="lang" src="/english.png" alt="" onClick={() => updateLang("en")} />
+          <img className="lang" src="/estonian.png" alt=""  onClick={() => updateLang("ee")} />
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+      {/* <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">Webshop</Navbar.Brand>
           <Nav className="me-auto">
@@ -72,7 +108,7 @@ function App() {
           <img className="lang" src="/english.png" alt="" onClick={() => updateLang("en")} />
           <img className="lang" src="/estonian.png" alt=""  onClick={() => updateLang("ee")} />
         </Container>
-      </Navbar>
+      </Navbar> */}
 
       <Routes>
         <Route path="" element={ <HomePage /> } />
@@ -91,7 +127,11 @@ function App() {
           <Route path="admin/maintain-categories" element={ <MaintainCategories /> } />
         </> }
         { loggedIn === false && <Route path="admin/*" element={ <Navigate to="/login" /> } /> }
+        {/* <Route path="*" element={ <Navigate to="/" /> } /> */}
+        <Route path="*" element={ <NotFound /> } />
       </Routes>
+
+      <div className="footer">SEE ON FOOTER</div>
     </div>
   );
 }
